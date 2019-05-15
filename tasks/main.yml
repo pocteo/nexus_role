@@ -1,0 +1,16 @@
+---
+# tasks file for nexus_role
+
+- name: create the deployments and services
+  command:  kubectl apply -f -
+  args:
+      stdin: "{{ lookup('template', '{{ item }}-nexus.yaml.j2') }}"
+  loop:
+    - deployment
+    - service
+#- 
+ # command: "kubectl apply -f roles/nexus_role/files/secret.yaml"
+  #name: "create the secret"
+#- 
+ # command: "kubectl apply -f roles/nexus_role/files/configmap.yaml"
+  #name: "create the configmap"
